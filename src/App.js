@@ -1,28 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Card from "./components/Card/Card";
+import "./App.css";
+import "./components/Card/Card.css";
 
 class App extends Component {
+  state = {
+    cards: [
+      { id: 1, number: 2, showCard: false },
+      { id: 2, number: 4, showCard: false },
+      { id: 3, number: 3, showCard: false },
+      { id: 4, number: 2, showCard: false },
+      { id: 5, number: 3, showCard: false },
+      { id: 6, number: 4, showCard: false },
+      { id: 7, number: 2, showCard: false },
+      { id: 8, number: 1, showCard: false }
+    ],
+    currentNumbers: {}
+  };
+
+  check = number1ToCheck => {
+
+    });
+  };
+  showToTrue = event => {};
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.cards.map((card, index) => {
+          return (
+            <Card
+              clicked={() => {
+                this.check(card.number);
+              }}
+              number={card.number}
+              key={card.id}
+            />
+          );
+        })}
       </div>
     );
   }
 }
-
 export default App;
