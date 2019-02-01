@@ -15,30 +15,41 @@ class App extends Component {
       { id: 7, number: 2, showCard: false },
       { id: 8, number: 1, showCard: false }
     ],
-    currentNumbers: {}
+    currentNumbers: [],
+    match: false
   };
 
   check = numberToCheck => {
-        this.setState({
-            currentNumbers: {...this.state.currentNumbers, numberToCheck}
-        });
-    };
-  
+    let numbers = this.state.currentNumbers;
+    if (numbers.length < 2) {
+      this.setState({
+        currentNumbers: [...this.state.currentNumbers, numberToCheck]
+      });
+    } else if ((numbers.length = 2 && numbers[0] === numbers[1])) {
+      this.setState({
+        currentNumbers: [],
+        match: true
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
-        {
-        this.state.cards.map(card => {
+        {this.state.cards.map(card => {
           return (
-            <Card 
-            clicked={() => {
-                this.check(card.number)
+            <Card
+              clicked={() => {
+                this.check(card.number);
               }}
               number={card.number}
               key={card.id}
-            />)})}
+            />
+          );
+        })}
       </div>
-    )};
-  
+    );
+  }
+}
 
 export default App;
