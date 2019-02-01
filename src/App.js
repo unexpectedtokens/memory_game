@@ -18,27 +18,27 @@ class App extends Component {
     currentNumbers: {}
   };
 
-  check = number1ToCheck => {
-
-    });
-  };
-  showToTrue = event => {};
+  check = numberToCheck => {
+        this.setState({
+            currentNumbers: {...this.state.currentNumbers, numberToCheck}
+        });
+    };
+  
   render() {
     return (
       <div className="App">
-        {this.state.cards.map((card, index) => {
+        {
+        this.state.cards.map(card => {
           return (
-            <Card
-              clicked={() => {
-                this.check(card.number);
+            <Card 
+            clicked={() => {
+                this.check(card.number)
               }}
               number={card.number}
               key={card.id}
-            />
-          );
-        })}
+            />)})}
       </div>
-    );
-  }
-}
+    )};
+  
+
 export default App;
